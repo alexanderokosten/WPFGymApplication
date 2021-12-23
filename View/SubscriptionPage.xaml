@@ -1,0 +1,54 @@
+﻿<Page x:Class="GymApp.View.SubscriptionPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:GymApp.View"
+      mc:Ignorable="d" 
+       Background="#FF410A66"
+      FontFamily="Arial"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="SubscriptionPage">
+
+    <DockPanel>
+        <Label Content="Абонементы" 
+               DockPanel.Dock="Top"  Style="{StaticResource HeaderLabel}" Height="35"
+              />
+       
+        <ListBox ItemsSource="{Binding AllSubscription}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Background="#FF410A66">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel ItemWidth="500"/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                       
+                        <StackPanel Grid.Column="1">
+                            <TextBlock FontSize="20" FontWeight="Bold">
+                                 <Run Text="Название: "  Foreground="White" FontSize="14" FontFamily="Arial"/>
+                                <Run Text="{Binding SubscriptionName}"  Foreground="White" FontSize="14" FontFamily="Arial"/>
+                               
+                            </TextBlock>
+                            <StackPanel>
+                                <TextBlock>
+                                 <Run Text="Месяцы: "  Foreground="White" FontSize="14" FontFamily="Arial"/>
+                                <Run Text="{Binding NumberOfMonths}"   Foreground="White" FontSize="14" FontFamily="Arial"/>
+                                </TextBlock>
+                            </StackPanel>
+                        </StackPanel>
+                    
+                           
+                      
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </DockPanel>
+</Page>

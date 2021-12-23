@@ -1,0 +1,36 @@
+﻿<Window x:Class="GymApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:GymApp"
+         Background="#FF410A66"
+        mc:Ignorable="d"
+       Title="Главная страница" Height="651.774" Width="1164">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition/>
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="250"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <Frame Grid.Column="1" 
+               Grid.Row="1" 
+               Name="MainFrame" NavigationUIVisibility="Hidden" />
+        <Image Source="splash.png"/>
+        <Label Grid.Column="1" Content="Добро пожаловать!" x:Name="label1" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"
+               FontSize="30" FontWeight="Bold"/>
+        <StackPanel Grid.Row="1">
+
+            <Button  Content="Клиенты" Height="40" Click="GoToClientPage" Style="{StaticResource Button}" />
+            <Button Content="Тренера" Height="40" Click="GoToTrainerPage" Style="{StaticResource Button}"/>
+            <Button Content="Групповые занятия" Height="40" Click="GoToGroupLessonsPage" Style="{StaticResource Button}"/>
+            <Button Content="Абонементы" Height="40" Click="GoToSubscriptionPage" Style="{StaticResource Button}"/>
+         
+        </StackPanel>
+    </Grid>
+</Window>

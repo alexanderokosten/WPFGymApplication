@@ -1,0 +1,59 @@
+﻿<Window x:Class="GymApp.View.SignUpClientTrainerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:datepicker="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:local="clr-namespace:GymApp.View"
+        ResizeMode="NoResize"
+        mc:Ignorable="d"
+         FontFamily="Arial"
+        Background="#FF7800"
+        Title="Запись.." Height="312.295" Width="431.148">
+    <StackPanel Margin="0,0,0,4">
+        <Label Content="Запись клиента к тренеру"  HorizontalAlignment="Center" Style="{StaticResource HeaderLabel}"  />
+        
+        <Label Content=" "  x:Name="Name" Style="{StaticResource ContextLable}"/>
+        <Label Content=" "  x:Name="Lastname" Style="{StaticResource ContextLable}"/>
+        <Label Content=" "  x:Name="Patronimyc" Style="{StaticResource ContextLable}"/>
+        
+        <ComboBox Margin="5,0,5,0" ItemsSource="{Binding Trainers}" x:Name="TrainersCombobox"
+                  materialDesign:HintAssist.Hint="Выбрать тренера..."
+                    materialDesign:HintAssist.Foreground="Green"
+                    materialDesign:TextFieldAssist.UnderlineBrush="Green"
+                    FontSize="20">
+            <ComboBox.ItemTemplate>
+                <DataTemplate >
+                    <StackPanel>
+                        <TextBlock >
+                                <Run Text="{Binding Surname}"/>
+                                    <Run Text="{Binding Name}"/>
+                                    <Run Text="{Binding Patronymic}"/>
+                        </TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <TextBox x:Name="NumberOfWorkoutsTextBox"  Text="{Binding NumberOfWorkouts}" Margin="5,0,5,0" FontSize="15" PreviewTextInput="NumberOfWorkouts_PreviewTextInput" MaxLength="40"
+                   materialDesign:HintAssist.Hint="Количество тренировок"
+                    materialDesign:HintAssist.Foreground="Green"
+                    materialDesign:TextFieldAssist.UnderlineBrush="Green"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+
+       
+        <Label x:Name="errorLabel" Content="" Style="{StaticResource ContextLable}"/>
+
+       
+        <Grid Height="43">
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Content="Добавить" Style="{StaticResource Button}"  Margin=" 5" Click="SaveButton" x:Name="EditStudentsButton"/>
+            <Button Content="Назад"  Margin=" 5" Style="{StaticResource Button}" Click="CloseButton" Grid.Column="1" />
+
+        </Grid>
+    </StackPanel>
+</Window>

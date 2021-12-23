@@ -1,0 +1,51 @@
+﻿<Window x:Class="GymApp.View.UpdateGroupLessonsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GymApp.View"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+         FontFamily="Arial"
+        Background="#FF7800"
+        Title="Обновление данных..." Height="237.295" Width="460.656">
+    <StackPanel Margin="0,0,0,3">
+        <Label Content="Тренер"  HorizontalAlignment="Center" Style="{StaticResource HeaderLabel}" />
+
+        <TextBox x:Name="NameTextBox"  Text="{Binding CurrentGroupLessons.LessonName}" Margin="5,0,5,0" FontSize="15" PreviewTextInput="NameTextBox_PreviewTextInput"  MaxLength="200"
+                    materialDesign:HintAssist.Hint="Имя"
+                    materialDesign:HintAssist.Foreground="Green"
+                    materialDesign:TextFieldAssist.UnderlineBrush="Green"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+
+        <ComboBox Margin="5,0,5,0" ItemsSource="{Binding Trainers}" x:Name="TrainersCombobox"
+                  materialDesign:HintAssist.Hint="Выбрать тренера..."
+                    materialDesign:HintAssist.Foreground="Green"
+                    materialDesign:TextFieldAssist.UnderlineBrush="Green"
+                    FontSize="20">
+            <ComboBox.ItemTemplate>
+                <DataTemplate >
+                    <StackPanel>
+                        <TextBlock >
+                                <Run Text="{Binding Surname}"/>
+                                    <Run Text="{Binding Name}"/>
+                                    <Run Text="{Binding Patronymic}"/>
+                        </TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        
+
+        <Grid Height="43">
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Button Content="Сохранить"  Margin=" 5" Click="SaveButton" x:Name="EditStudentsButton" Style="{StaticResource Button}"/>
+            <Button Content="Назад"  Margin=" 5" Click="CloseButton" Grid.Column="1" Style="{StaticResource Button}" />
+
+        </Grid>
+    </StackPanel>
+</Window>

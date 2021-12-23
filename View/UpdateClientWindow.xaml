@@ -1,0 +1,53 @@
+﻿<Window x:Class="GymApp.View.UpdateClientWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GymApp.View"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        FontFamily="Arial"
+        Background="#FF7800"
+        mc:Ignorable="d"
+        Title="Обновление данных о клиенте" Height="450" Width="449.59">
+    <StackPanel>
+        <Label Content="Клиент"  HorizontalAlignment="Center" Style="{StaticResource HeaderLabel}" />
+
+        <TextBox x:Name="NameTextBox"  Text="{Binding CurrentClient.Name}" Margin="5,0,5,0" FontSize="15" PreviewTextInput="NameTextBox_PreviewTextInput"  MaxLength="200"
+                    materialDesign:HintAssist.Hint="Имя"
+                    materialDesign:HintAssist.Foreground="Green"
+                    materialDesign:TextFieldAssist.UnderlineBrush="Green"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+
+        <TextBox x:Name="SurnameTextBox" Text="{Binding CurrentClient.Surname}"  Margin="5,0,5,0" FontSize="15" PreviewTextInput="SurnameTextBox_PreviewTextInput"  MaxLength="200"
+                  materialDesign:HintAssist.Hint="Фамилия"
+                    materialDesign:HintAssist.Foreground="Green"
+                    materialDesign:TextFieldAssist.UnderlineBrush="Green"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+
+        <TextBox x:Name="PatronymicTextBox" Text="{Binding CurrentClient.Patronymic}" Margin="5,0,5,0" FontSize="15" PreviewTextInput="PatronymicTextBox_PreviewTextInput"  MaxLength="200"
+                  materialDesign:HintAssist.Hint="Отчество"
+                    materialDesign:HintAssist.Foreground="Green"
+                    materialDesign:TextFieldAssist.UnderlineBrush="Green"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+
+    
+        <TextBox x:Name="BirthdayTextBox" Text="{Binding CurrentClient.DateOfBirth}"  Margin="5,0,5,10" FontSize="15" PreviewTextInput="BirthdayTextBox_PreviewTextInput"  MaxLength="150"
+                  materialDesign:HintAssist.Hint="День рождения"
+                    materialDesign:HintAssist.Foreground="Green"
+                    materialDesign:TextFieldAssist.UnderlineBrush="Green"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+        <Label Content=" "  x:Name="NumberOfContract" Style="{StaticResource ContextLable}"/>
+        <Label Content=" "  x:Name="Subscription" Style="{StaticResource ContextLable}"/>
+        <Label Content=" "  x:Name="SubscriptionStratDate" Style="{StaticResource ContextLable}"/>
+        <Label Content=" "  x:Name="SubscriptionEndDate" Style="{StaticResource ContextLable}"/>
+        <Grid Height="43">
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Button Content="Сохранить"  Margin=" 5" Click="SaveButton" x:Name="EditStudentsButton" Style="{StaticResource Button}"/>
+            <Button Content="Назад"  Margin=" 5" Click="CloseButton" Grid.Column="1" Style="{StaticResource Button}" />
+
+        </Grid>
+    </StackPanel>
+</Window>

@@ -1,0 +1,70 @@
+﻿<Window x:Class="GymApp.View.AddTrainerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GymApp.View"
+           xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:datepicker="http://schemas.xceed.com/wpf/xaml/toolkit"
+        ResizeMode="NoResize"
+        mc:Ignorable="d"
+          FontFamily="Arial"
+        Background="#FF7800"
+        Title="AddTrainerWindow" Height="480.738" Width="449.59">
+    <StackPanel>
+        <Label Content="Клиент"  HorizontalAlignment="Center" Style="{StaticResource HeaderLabel}"  />
+
+        <TextBox x:Name="NameTextBox"  Text="{Binding Name}" Margin="5,0,5,0" FontSize="15" PreviewTextInput="NameTextBox_PreviewTextInput" MaxLength="40"
+                   materialDesign:HintAssist.Hint="Имя"
+                    materialDesign:HintAssist.Foreground="Green"
+                    materialDesign:TextFieldAssist.UnderlineBrush="Green"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+
+        <TextBox x:Name="SurnameTextBox" Text="{Binding Surname}"  Margin="5,0,5,0" FontSize="15" PreviewTextInput="SurnameTextBox_PreviewTextInput"  MaxLength="40"
+                   materialDesign:HintAssist.Hint="Фамилия"
+                    materialDesign:HintAssist.Foreground="Green"
+                    materialDesign:TextFieldAssist.UnderlineBrush="Green"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+
+        <TextBox x:Name="PatronymicTextBox" Text="{Binding Patronymic}" Margin="5,0,5,0" FontSize="15" PreviewTextInput="PatronymicTextBox_PreviewTextInput"  MaxLength="40"
+                   materialDesign:HintAssist.Hint="Отчество"
+                    materialDesign:HintAssist.Foreground="Green"
+                    materialDesign:TextFieldAssist.UnderlineBrush="Green"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+
+        <Label Content="Пол" Style="{StaticResource ContextLable}"/>
+        <ComboBox x:Name="comboBoxSex" Text="Пол" IsReadOnly="True"
+                  ItemsSource="{Binding AllSex}" DisplayMemberPath="Name"
+                  SelectedValuePath="Sex_Id"></ComboBox>
+        <Label Content="Дата рождения" Style="{StaticResource ContextLable}"  />
+        <datepicker:DateTimePicker x:Name="BirthdayTextBox" Text="{Binding DateOfBirth}"  Margin="5,0,5,10" FontSize="15"/>
+        
+
+
+        
+        <TextBox x:Name="CoachingExperienceTextBox" Text="{Binding CoachingExperience}" Margin="5,0,5,0" FontSize="15" PreviewTextInput="CoachingExperienceTextBox_PreviewTextInput"  MaxLength="40"
+                   materialDesign:HintAssist.Hint="Стаж работы"
+                    materialDesign:HintAssist.Foreground="Green"
+                    materialDesign:TextFieldAssist.UnderlineBrush="Green"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+        
+        <TextBox x:Name="ParicularQualitiesTextBox" Text="{Binding ParicularQualities}" Margin="5,0,5,0" FontSize="15" PreviewTextInput="ParicularQualitiesTextBox_PreviewTextInput"  MaxLength="40"
+                   materialDesign:HintAssist.Hint="Особенности"
+                    materialDesign:HintAssist.Foreground="Green"
+                    materialDesign:TextFieldAssist.UnderlineBrush="Green"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+
+        <Label x:Name="errorLabel" Content="" Style="{StaticResource ContextLable}"/>
+
+        <Grid Height="43">
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Content="Добавить" Style="{StaticResource Button}"  Margin=" 5" Click="SaveButton" x:Name="EditStudentsButton"/>
+            <Button Content="Назад"  Margin=" 5" Style="{StaticResource Button}" Click="CloseButton" Grid.Column="1" />
+
+        </Grid>
+    </StackPanel>
+</Window>

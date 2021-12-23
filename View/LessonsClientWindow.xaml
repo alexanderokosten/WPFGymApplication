@@ -1,0 +1,77 @@
+﻿<Window x:Class="GymApp.View.LessonsClientWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:GymApp.View"
+        ResizeMode="NoResize"
+        mc:Ignorable="d"
+        Background="#FF410A66"
+        FontFamily="Arial"
+    
+        Title="Окно клиентов записанных на занятие" Height="450" Width="800">
+    <DockPanel>
+        <Label Content="Клиенты" 
+               DockPanel.Dock="Top"  Style="{StaticResource HeaderLabel}" Height="35"
+              />
+        <StackPanel DockPanel.Dock="Top" VerticalAlignment="Top" HorizontalAlignment="Right" Orientation="Horizontal">
+            <Label Content="Фамилия: " Style="{StaticResource ContextLable}"/>
+            <TextBox Margin="20,0,10,0"
+                     Foreground="Black"
+                     materialDesign:TextFieldAssist.UnderlineBrush="Green"
+                     TextChanged="SearchTextbox" x:Name="searchTextBox" PreviewTextInput="searchTextBox_PreviewTextInput" Background="White" Width="95" Height="25"/>
+            <!--<TextBox Width="100" />-->
+            <Label Content="Сортировать" Style="{StaticResource ContextLable}"/>
+            <ComboBox VerticalAlignment="Top" HorizontalAlignment="Center" DockPanel.Dock="Top" Width="150" x:Name="SurnameCombobox" SelectionChanged="SurnameCombobox_SelectionChanged" Background="White">
+                <ComboBoxItem Content="По убыванию"/>
+                <ComboBoxItem Content="По возрастанию"/>
+            </ComboBox>
+           
+        </StackPanel>
+        <ListBox ItemsSource="{Binding AllClients}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Background="#FF410A66">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel ItemWidth="500"/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="1">
+                            <TextBlock FontSize="20" FontWeight="Bold">
+                                <Run Text="{Binding Clients.Name}"  Foreground="White" FontSize="14" FontFamily="Arial"/>
+                                <Run Text="{Binding Clients.Surname}"   Foreground="White" FontSize="14" FontFamily="Arial"/>
+                                <Run Text="{Binding Clients.Patronymic}"  Foreground="White" FontSize="14" FontFamily="Arial"/>
+                            </TextBlock>
+                            <TextBlock FontSize="20" FontWeight="Bold">
+                                 <Run Text="Начало занятия"  Foreground="White" FontSize="14" FontFamily="Arial"/>
+                                <Run Text="{Binding DateStart}"  Foreground="White" FontSize="14" FontFamily="Arial"/>
+                            
+                            
+                            </TextBlock>
+                            <TextBlock FontSize="20" FontWeight="Bold">
+                              
+                                   <Run Text="Конец занятия"  Foreground="White" FontSize="14" FontFamily="Arial"/>
+                                <Run Text="{Binding DateEnd}"   Foreground="White" FontSize="14" FontFamily="Arial"/>
+
+                            </TextBlock>
+
+                            <TextBlock Margin="0, 7" x:Name="buttonTextBlock">
+
+                                <Button Content="Удалить" x:Name="delButton" Click="DeleteClient" Tag="{Binding }" Style="{StaticResource Button}"/>
+
+                            </TextBlock>
+
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </DockPanel>
+</Window>

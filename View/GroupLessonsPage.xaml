@@ -1,0 +1,75 @@
+﻿<Page x:Class="GymApp.View.GroupLessonsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:GymApp.View"
+      mc:Ignorable="d" 
+        Background="#FF410A66"
+      FontFamily="Arial"
+
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="GroupLessonsPage">
+    <DockPanel>
+        <Label Content="Групповые занятия" 
+               DockPanel.Dock="Top"  Style="{StaticResource HeaderLabel}" Height="35"
+              />
+        <StackPanel DockPanel.Dock="Top" VerticalAlignment="Top" HorizontalAlignment="Right" Orientation="Horizontal">
+            <Label Content="Название: " Style="{StaticResource ContextLable}"/>
+            <TextBox Margin="20,0,10,0"
+                     Foreground="Black"
+                     materialDesign:TextFieldAssist.UnderlineBrush="Green"
+                     TextChanged="SearchTextbox" x:Name="searchTextBox" PreviewTextInput="searchTextBox_PreviewTextInput" Background="White" Width="95" Height="25"/>
+            <!--<TextBox Width="100" />-->
+            <Label Content="Сортировать" Style="{StaticResource ContextLable}"/>
+            <ComboBox VerticalAlignment="Top" HorizontalAlignment="Center" DockPanel.Dock="Top" Width="150" x:Name="SurnameCombobox" SelectionChanged="SurnameCombobox_SelectionChanged" Background="White">
+                <ComboBoxItem Content="По убыванию"/>
+                <ComboBoxItem Content="По возрастанию"/>
+            </ComboBox>
+          
+            <Button Content="Добавить" Click="AddClient_Click" Style="{StaticResource Button}" Width="94"/>
+        </StackPanel>
+        <ListBox ItemsSource="{Binding AllLessons}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Background="#FF410A66">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel ItemWidth="500"/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="1">
+                            <TextBlock FontSize="20" FontWeight="Bold">
+                                <Run Text="{Binding LessonName}"  Foreground="White" FontSize="14" FontFamily="Arial"/>
+                            
+                            </TextBlock>
+                            <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" >
+                                <TextBlock Text="Тренер: " Foreground="White" FontSize="14" FontFamily="Arial"/>
+                                <TextBlock Text="{Binding Trainers.Name}"  Foreground="White" FontSize="14" FontFamily="Arial"/>
+                                <TextBlock Text=" "  Foreground="White" FontSize="14" FontFamily="Arial"/>
+                                <TextBlock Text="{Binding Trainers.Surname}"  Foreground="White" FontSize="14" FontFamily="Arial"/>
+                            </StackPanel>
+                            <TextBlock Margin="0, 7" x:Name="buttonTextBlock">
+                                <Button Content="Изменить" x:Name="editButton"  Tag="{Binding }" Click="UpdateClient" Style="{StaticResource Button}"/>
+                                <Button Content="Записать клиента" x:Name="addClientForGroupLessons"  Tag="{Binding }" Click="addClientForGroupLessons" Style="{StaticResource Button}"/>
+                               
+                                <Button Content="Удалить" x:Name="delButton" Click="DeleteClient" Tag="{Binding }" Style="{StaticResource Button}"/>
+
+                            </TextBlock>
+                            <TextBlock>
+                                 <Button Content="Посмотреть список участников" x:Name="listForGroupLessons"  Tag="{Binding }" Click="listForGroupLessons" Style="{StaticResource Button}"/>
+                            </TextBlock>
+
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </DockPanel>
+</Page>
